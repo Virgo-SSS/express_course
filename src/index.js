@@ -1,16 +1,14 @@
 import express from "express";
 import {router} from "./routes/user.js";
 import { ErrorMiddleware } from "./middleware/errorMiddleware.js";
-import path from 'path';
-import { fileURLToPath } from "url";
+import { __dirname } from "./helper/directoryPath.js";
+import expressFileUpload from "express-fileupload";
 
 const app = express();
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const staticPath = path.join(__dirname, '../static');
-console.log(staticPath);
+const staticPath = __dirname + '/static';
 
 app.use(express.json());
+app.use(expressFileUpload()) // middleware untuk handle file upload
 app.use(express.static(staticPath));
 app.use('/file',express.static(staticPath)); // contoh untuk mendapatkan static file tapi menggunkan url path /file contoh: http://localhost:3000/file/hallo.txt
 

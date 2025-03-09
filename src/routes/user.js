@@ -1,4 +1,5 @@
 import express from "express"
+import { __dirname } from "../helper/directoryPath.js";
 
 const router = express.Router();
 
@@ -34,6 +35,22 @@ router.delete('/', (req, res) => {
     res.status(200).json({
         message: "Successfully delete user"
     })
+});
+
+router.post('/update-gambar', async (req, res) => {
+    try {
+        let file = req.files.profile;
+        console.log(file.name);
+        await file.mv(__dirname + '/storages/' + file.name);
+
+        res.status(200)
+        .json({
+            message: "Successfully update gambar"
+        });
+    } catch (error) {
+        throw new Error(error.message)
+        
+    }
 });
 
 export {
