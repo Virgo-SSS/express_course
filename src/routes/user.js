@@ -8,6 +8,11 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/test-error', (req, res) => {
+    throw new Error("User sedang error");
+    
+});
+
 router.get('/:id', (req, res) => {
     let userId = req.params.id;
     res.status(200).send({
@@ -23,6 +28,12 @@ router.post('/', (req, res) => {
     res.status(200).send({
         name
     });
+});
+
+router.delete('/', (req, res) => {
+    res.status(200).json({
+        message: "Successfully delete user"
+    })
 });
 
 export {
