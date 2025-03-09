@@ -1,0 +1,19 @@
+{
+  "name": "express_course",
+  "version": "1.0.0",
+  "main": "./src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon ./src/index.js",
+    "test": "test"
+  },
+  "author": "virgo stevanus",
+  "license": "ISC",
+  "description": "Express course",
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
