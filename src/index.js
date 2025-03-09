@@ -14,6 +14,15 @@ app.use('/file',express.static(staticPath)); // contoh untuk mendapatkan static 
 
 app.use('/user', router);
 
+// lakukan hal ini jika ingin membuat custom response untuk url not found, 
+// code ini harus berada di akhir route
+app.use((req,res,next) => {
+    res.status(404)
+    .json({
+        message: "Halaman tidak ada"
+    })
+})
+
 app.use(ErrorMiddleware); // ini harus di letakan di paling akhir
 
 app.listen(3000, () => {
